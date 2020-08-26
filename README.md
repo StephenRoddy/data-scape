@@ -1,3 +1,27 @@
+## Project Overview: Data-scape
+This project is to develop a react and bootstrap based framework for multimodal data analytics.
+Essentially it will integrate graphs and maps from d3.js, audio from Tone.js and animations from p5.js (HTML5 Canvas & WebGL).
+The framework will be usable as a front-end alternative to purely visual dashboards.
+The framework will allow data to be represented with images, sound and visuals/animations.
+
+In its current state, d3.js and tone.js are integrated.
+
+Next steps:
+1. Integrate p5.js.
+2. Create helper functions for managing API data.
+3. Create components to deal with a broader range of d3.js visualisations.
+4. Create components to deal with animations.
+5. Create components to deal with sonififcations.
+6. Clean up the App.js file.
+
+Final Steps:
+1. Create examples w/IoT data, COVID-19 data, Smart CIty Data etc.
+
+
+
+
+## Package Info: create-react-app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
