@@ -96,7 +96,7 @@ class App extends Component {
 
     console.log(total_deaths);
 
-    const { data } = this.state;
+    const { data } = this.state; // data for d3
 
 // create graph
     const parentWidth = 500;

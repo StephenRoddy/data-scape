@@ -22,8 +22,12 @@ import * as Tone from 'tone';
 import XYAxis from './components/axis/xy-axis.js';
 import Line from './components/line/line.js';
 import Navbar from './components/navBar.js';
-import TodaysCases from './components/today.js';
 import PlaySound from './components/playSound.js';
+
+// Data Imports
+import TotalDeaths from './components/totalDeaths.js';
+import TotalCases from './components/totalCases.js';
+
 
 // Import Audio  to play
 import AudioPlay from './scripts/audioPlay.js';
@@ -53,8 +57,48 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+
+    // Get COVID-19 Total Deaths
+  fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=TotalCovidDeaths&returnGeometry=false&outSR=4326&f=json') // use a header for the api keey value pair
+    .then(res => res.json())
+    .then((deaths) => {
+      this.setState({ total_death_data: deaths })
+      this.setState({ total_deaths: this.state.total_death_data.features[this.state.total_death_data.features.length-1].attributes.TotalCovidDeaths });
+    //  console.log(this.state.total_deaths);
+
+
+    })
+    .catch(console.log)
+
+    // Get COVID-19 Total Confirmed Cases
+    fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=TotalConfirmedCovidCases&returnGeometry=false&outSR=4326&f=json') // use a header for the api keey value pair
+      .then(res => res.json())
+      .then((cases) => {
+        this.setState({ total_cases_data: cases })
+        this.setState({ total_cases: this.state.total_cases_data.features[this.state.total_cases_data.features.length-1].attributes.TotalConfirmedCovidCases});
+
+    //    console.log(this.state.total_cases);
+      //  this.setState({ dogGif: this.state.imgData[0].url }) // Extract out dog imageUrl and pass as prop to dog componenbt
+        //console.log('Here is the dog image: ' + this.state.dog);
+      })
+      .catch(console.log)
+
+  }
+
+
+
+
   render() {
-    const { data } = this.state;
+// Define the data to be sent to the components as props
+    const total_deaths = this.state.total_deaths;
+    const total_cases = this.state.total_cases;
+
+    console.log(total_deaths);
+
+    const { data } = this.state; // data for d3
+
+// create graph
     const parentWidth = 500;
 
     const margins = {
@@ -111,7 +155,8 @@ class App extends Component {
           </div>
           </div>
 
-          {<TodaysCases data={data} />}
+          {<TotalDeaths total_deaths={total_deaths} />}
+          {<TotalCases total_cases={total_cases} />}
           </div>
           {<PlaySound />}
 
