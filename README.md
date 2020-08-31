@@ -7,6 +7,8 @@ The framework will allow data to be represented with images, sound and visuals/a
 In its current state, d3.js and tone.js are integrated.
 
 Next steps:
+
+0. Fetch and Parse data from GEO_Hive Api.
 1. Integrate p5.js.
 2. Create helper functions for managing API data.
 3. Create components to deal with a broader range of d3.js visualisations.
