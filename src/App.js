@@ -19,8 +19,8 @@ import { transition } from 'd3-transition';
 import * as Tone from 'tone';
 
 // Import Components
-import XYAxis from './components/axis/xy-axis.js';
-import Line from './components/line/line.js';
+//import XYAxis from './components/axis/xy-axis.js';
+//import Line from './components/line/line.js';
 import Navbar from './components/navBar.js';
 import PlaySound from './components/playSound.js';
 
@@ -28,6 +28,8 @@ import PlaySound from './components/playSound.js';
 import TotalDeaths from './components/totalDeaths.js';
 import TotalCases from './components/totalCases.js';
 
+// d3 Chart Imports
+import BarChart from './components/charts/bar.js';
 
 // Import Audio  to play
 import AudioPlay from './scripts/audioPlay.js';
@@ -44,91 +46,69 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: [
+      data2: [1, 2, 3, 4, 5, 6],
+  //    total_cases: [1, 2, 3, 4, 5, 6], // for some reason this needs to be defined here before being reset.. prob helps defined the props or something should check that
+  //    total_deaths: [1, 2, 3, 4, 5, 6],
+      width: 400,
+      height: 200,
 
-        { name: 'Thursday', value: 27499 },
-        { name: 'Friday', value: 27676 },
-        { name: 'Saturday', value: 27755 },
-        { name: 'Sunday', value: 27908 },
-        { name: 'Monday', value: 27969 },
-        { name: 'Tuesday', value: 28116 },
-        { name: 'Wednesday', value: 28201 },
-      ],
     }
+
   }
 
   componentDidMount(){
-
-    // Get COVID-19 Total Deaths
-  fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=TotalCovidDeaths&returnGeometry=false&outSR=4326&f=json') // use a header for the api keey value pair
+    // Get COVID-19 Total Deaths, Total Confirmed Cases and Dates
+  fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=TotalConfirmedCovidCases,TotalCovidDeaths,HospitalisedAged25to34,Date&outSR=4326&f=json') // use a header for the api keey value pair
     .then(res => res.json())
-    .then((deaths) => {
-      this.setState({ total_death_data: deaths })
-      this.setState({ total_deaths: this.state.total_death_data.features[this.state.total_death_data.features.length-1].attributes.TotalCovidDeaths });
-    //  console.log(this.state.total_deaths);
+    .then((data) => {
+      this.setState({ data: data }) // load in all the data as json
+      this.setState({ total_deaths: [6, 5, 3, 4, 5, 6] }) // create array to store deaths
+      this.setState({ total_cases: [6, 5, 3, 4, 5, 6] }) // create array to store cases
+      // Create 2 new arrays containing the confrimed cases and death numbers for ireland for the past 7 days.
 
+      this.setState({t_c: this.state.data.features[this.state.data.features.length-(1+0)].attributes.TotalConfirmedCovidCases});
+      this.setState({y1_c: this.state.data.features[this.state.data.features.length-(1+1)].attributes.TotalConfirmedCovidCases});
+      this.setState({y2_c: this.state.data.features[this.state.data.features.length-(1+2)].attributes.TotalConfirmedCovidCases})
+      this.setState({y3_c: this.state.data.features[this.state.data.features.length-(1+3)].attributes.TotalConfirmedCovidCases})
+      this.setState({y4_c: this.state.data.features[this.state.data.features.length-(1+4)].attributes.TotalConfirmedCovidCases})
+      this.setState({y5_c: this.state.data.features[this.state.data.features.length-(1+5)].attributes.TotalConfirmedCovidCases})
+      this.setState({y6_c: this.state.data.features[this.state.data.features.length-(1+6)].attributes.TotalConfirmedCovidCases})
+
+      this.setState({t_d: this.state.data.features[this.state.data.features.length-(1+0)].attributes.TotalCovidDeaths});
+      this.setState({y1_d: this.state.data.features[this.state.data.features.length-(1+1)].attributes.TotalCovidDeaths});
+      this.setState({y2_d: this.state.data.features[this.state.data.features.length-(1+2)].attributes.TotalCovidDeaths})
+      this.setState({y3_d: this.state.data.features[this.state.data.features.length-(1+3)].attributes.TotalCovidDeaths})
+      this.setState({y4_d: this.state.data.features[this.state.data.features.length-(1+4)].attributes.TotalCovidDeaths})
+      this.setState({y5_d: this.state.data.features[this.state.data.features.length-(1+5)].attributes.TotalCovidDeaths})
+      this.setState({y6_d: this.state.data.features[this.state.data.features.length-(1+6)].attributes.TotalCovidDeaths})
+
+
+/* Need to restructure this for loop to do this for us. Up there is far too unweildy*/
+/*
+let i;
+for (i=0; i < 6;i++){
+  this.state.total_deaths[i] = this.state.data.features[this.state.data.features.length-(1+i)].attributes.TotalCovidDeaths;
+  this.state.total_cases[i]  = this.state.data.features[this.state.data.features.length-(1+i)].attributes.TotalConfirmedCovidCases;
+
+}*/
+
+
+      this.setState({dth_r: this.state.total_deaths[0] });
+      this.setState({cse_r: this.state.total_cases[0] });
+
+//      console.log( this.state.total_deaths);
+//      console.log( this.state.total_cases);
+//      console.log( this.state.dth_r);
+//      console.log( this.state.cse_r);
 
     })
     .catch(console.log)
-
-    // Get COVID-19 Total Confirmed Cases
-    fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=TotalConfirmedCovidCases&returnGeometry=false&outSR=4326&f=json') // use a header for the api keey value pair
-      .then(res => res.json())
-      .then((cases) => {
-        this.setState({ total_cases_data: cases })
-        this.setState({ total_cases: this.state.total_cases_data.features[this.state.total_cases_data.features.length-1].attributes.TotalConfirmedCovidCases});
-
-    //    console.log(this.state.total_cases);
-      //  this.setState({ dogGif: this.state.imgData[0].url }) // Extract out dog imageUrl and pass as prop to dog componenbt
-        //console.log('Here is the dog image: ' + this.state.dog);
-      })
-      .catch(console.log)
-
   }
 
 
-
-
   render() {
-// Define the data to be sent to the components as props
-    const total_deaths = this.state.total_deaths;
-    const total_cases = this.state.total_cases;
-
-    console.log(total_deaths);
-
-    const { data } = this.state; // data for d3
-
-// create graph
-    const parentWidth = 500;
-
-    const margins = {
-      top: 20,
-      right: 20,
-      bottom: 20,
-      left: 20,
-    };
-
-    const width = parentWidth - margins.left - margins.right;
-    const height = 200 - margins.top - margins.bottom;
-
-    const ticks = 5;
-    const t = transition().duration(1000);
-
-    const xScale = scaleBand()
-      .domain(data.map(d => d.name))
-      .rangeRound([0, width]).padding(0.1);
-
-    const yScale = scaleLinear()
-      .domain(extent(data, d => d.value))
-      .range([height, 0])
-      .nice();
-
-    const lineGenerator = line()
-      .x(d => xScale(d.name))
-      .y(d => yScale(d.value))
-      .curve(curveMonotoneX);
-
 //COVID-19 Ireland
+
     return (
       <div class="container-fluid">
       {<Navbar />}
@@ -140,23 +120,16 @@ class App extends Component {
             <div class="card-body">
               <h5 classs="card-title">Past 7 days</h5>
               <h6 class="card-subtitle text-muted">Confirmed Cases</h6>
-            <svg
-              className="lineChartSvg"
-              width={width + margins.left + margins.right}
-              height={height + margins.top + margins.bottom}
-            >
-              <g transform={`translate(${margins.left}, ${margins.top})`}>
-                <XYAxis {...{ xScale, yScale, height, ticks, t }} />
-                <Line data={data} xScale={xScale} yScale={yScale} lineGenerator={lineGenerator} width={width} height={height} />
-              </g>
-            </svg>
+              <div>
+                <BarChart data={this.state.data2} width={this.state.width} height={this.state.height} />
+                </div>
 
           </div>
           </div>
           </div>
 
-          {<TotalDeaths total_deaths={total_deaths} />}
-          {<TotalCases total_cases={total_cases} />}
+          {<TotalDeaths total_deaths={this.state.t_d} />}
+          {<TotalCases total_cases={this.state.t_c} />}
           </div>
           {<PlaySound />}
 
