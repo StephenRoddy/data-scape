@@ -8,7 +8,8 @@ In its current state, d3.js and tone.js are integrated.
 
 Next steps:
 
-0. Fetch and Parse data from GEO_Hive Api.
+0. Fetch and Parse more useful data from GEO_Hive Api.
+0.1 Integrate line-charts properly.
 1. Integrate p5.js.
 2. Create helper functions for managing API data.
 3. Create components to deal with a broader range of d3.js visualisations.
@@ -22,7 +23,7 @@ Final Steps:
 
 RESOURCES:
 https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0/geoservice?geometry=-7.921%2C53.252%2C-7.464%2C53.324
-
+https://www.d3-graph-gallery.com/graph/line_basic.html
 
 
 ## Package Info: create-react-app
