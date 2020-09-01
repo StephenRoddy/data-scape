@@ -20,11 +20,14 @@ Next steps:
 Final Steps:
 1. Create examples w/IoT data, COVID-19 data, Smart CIty Data etc.
 
+Notes: Moved over to Apex Cahrts from D3.js. They are a lot more intuitive to implement in react.
 
 RESOURCES:
 https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0/geoservice?geometry=-7.921%2C53.252%2C-7.464%2C53.324
+
 https://www.d3-graph-gallery.com/graph/line_basic.html
 
+https://apexcharts.com/
 
 ## Package Info: create-react-app
 
