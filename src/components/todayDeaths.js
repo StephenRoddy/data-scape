@@ -1,13 +1,13 @@
 //today.js
 import React from 'react';
 
-class TotalDeaths extends React.Component{
+class TodayDeaths extends React.Component{
   constructor(props){
       super(props);
       this.state = {props};
   }
   render(){
-    const today = this.props.total_deaths;
+    const today = this.props.today_deaths;
 
     return(
       <div class="col-sm mt-3 mb-3">
@@ -25,6 +25,6 @@ class TotalDeaths extends React.Component{
   }
 }
 
-export default TotalDeaths
+export default TodayDeaths
       //    <div> <h2>{this.props.data[data.length-1].value}</h2></div>
   //    <div> <h2>{this.props[5].value}</h2></div>

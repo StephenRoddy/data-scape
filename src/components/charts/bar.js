@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import * as d3 from "d3";
 
 class BarChart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.data
+    }
+  }
   componentDidMount() {
-    console.log(this.props.data)
     this.drawChart();
   }
 
   drawChart() {
     const data = this.props.data;
+    console.log(this.props.data)
+
     const w = this.props.width;
     const h = this.props.height;
 
