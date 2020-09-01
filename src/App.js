@@ -145,7 +145,7 @@ class App extends Component {
               <h5 classs="card-title">Confirmed Deaths</h5>
               <h6 class="card-subtitle text-muted">Past 7 Days</h6>
               <div>
-               <ApxChrt dataIn={total_cases} width={this.state.width} height={this.state.height} />
+               <ApxChrt dataIn={total_deaths} width={this.state.width} height={this.state.height} />
                 </div>
               </div>
             </div>
