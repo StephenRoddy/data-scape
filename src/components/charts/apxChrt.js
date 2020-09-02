@@ -9,15 +9,16 @@ class ApxChrt extends Component {
       dataIn: this.props.dataIn,
       options: {
         chart: {
-          id: "basic-bar"
+          id: "Line-Chart"
         },
         xaxis: {
-          categories: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday']
+          categories: this.props.date_series
+
         }
       },
       series: [
         {
-          name: "series-1",
+          name: this.props.name,
           data: this.props.dataIn
         }
       ]
@@ -27,16 +28,18 @@ class ApxChrt extends Component {
 
   render() {
 
-    console.log(this.state.dataIn);
+  //  console.log(this.state.dataIn);
 
     return (
-      <div className="app">
-        <div className="row">
+      <div class="opacity-5 shadow-sm">
+        <div class="card-body">
+          <h5 classs="card-title">{this.props.name}</h5>
+          <h6 class="card-subtitle text-muted">Past 7 Days</h6>
           <div className="mixed-chart">
             <Chart
               options={this.state.options}
               series={this.state.series}
-              type="bar"
+              type="line"
               width="500"
             />
           </div>
