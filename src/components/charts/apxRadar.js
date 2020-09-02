@@ -76,7 +76,7 @@ class ApxRadar extends React.Component {
 
   let d = new Date();
 
-    if (d.getDay() == 0){
+    if (d.getDay() == 1){
       this.setState({
         options: {
           xaxis: {
@@ -84,7 +84,7 @@ class ApxRadar extends React.Component {
                 }
               }
             })
-          } else if (d.getDay() == 1){
+          } else if (d.getDay() == 2){
             this.setState({
               options: {
                   xaxis: {
@@ -92,7 +92,7 @@ class ApxRadar extends React.Component {
                       }
                     }
                   })
-                } else if (d.getDay() == 2){
+                } else if (d.getDay() == 3){
                   this.setState({
                     options: {
                         xaxis: {
@@ -100,7 +100,7 @@ class ApxRadar extends React.Component {
                             }
                           }
                         })
-                      } else if (d.getDay() == 3){
+                      } else if (d.getDay() == 4){
 
                         this.setState({
                         options: {
@@ -109,7 +109,7 @@ class ApxRadar extends React.Component {
                                   }
                                 }
                               })
-                            } else if (d.getDay() == 4){
+                            } else if (d.getDay() == 5){
                               this.setState({
                                 options: {
                                     xaxis: {
@@ -117,7 +117,7 @@ class ApxRadar extends React.Component {
                                         }
                                       }
                                     })
-                                  } else if (d.getDay() == 5){
+                                  } else if (d.getDay() == 6){
                                     this.setState({
                                       options: {
                                           xaxis: {
@@ -125,7 +125,7 @@ class ApxRadar extends React.Component {
                                               }
                                             }
                                           })
-                                        } else if (d.getDay() == 6){
+                                        } else if (d.getDay() == 0){
                                           this.setState({
                                             options: {
                                                 xaxis: {
