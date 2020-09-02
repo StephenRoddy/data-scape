@@ -58,6 +58,7 @@ class App extends Component {
 
       total_death_series: [], //total death series
       total_cases_series: [], //total case series
+
       confirmed_deaths_series: [], //confirmed deaths series
       confirmed_cases_series: [], //confirmed cases series
 
@@ -156,8 +157,8 @@ class App extends Component {
           </div>
 
           <div class="col-sm  mt-3 mb-3">
-          {<Ticker data={this.state.today_con_cases} name ={"New Cases Today"} />}
-          {<Ticker data={this.state.today_con_deaths} name ={"New Deaths Today"} />}
+          {<Ticker data={this.state.today_con_cases} name ={"New Cases"} />}
+          {<Ticker data={this.state.today_con_deaths} name ={"New Deaths"} />}
 
           </div>
 

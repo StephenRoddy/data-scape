@@ -14,6 +14,9 @@ class ApxChrt extends Component {
         xaxis: {
           categories: this.props.date_series
 
+        },
+        yaxis:{
+          forceNiceScale: true
         }
       },
       series: [
