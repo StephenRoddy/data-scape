@@ -10,7 +10,7 @@ function PlaySound(props){
         synth.triggerAttackRelease("C4", "8n");
         console.log('The button was clicked.');  }
       return(
-        <button type="button" class ="btn btn-primary" onClick={handleClick}>Audio Test</button>
+        <button type="button" class ="btn btn-primary mt-3" onClick={handleClick}>Audio Test</button>
     );
 }
 export default PlaySound
