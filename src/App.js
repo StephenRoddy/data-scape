@@ -115,7 +115,7 @@ class App extends Component {
         date_series: date,
         width:400,
         height:200
-      }, () => console.log("Confirmed Deaths: " +con_d+" Confirmed Cases: "+con_c+ " Total deaths: " + this.state.total_deaths +" Total cases: "+ this.state.total_cases +" Today's deaths: "+ this.state.today_deaths +" Today's cases:  "+ this.state.today_cases ));
+      }, () => console.log("Confirmed Deaths: " +con_d+" Confirmed Cases: "+con_c+ " Total deaths: " + this.state.today_tot_deaths +" Total cases: "+ this.state.today_tot_cases +" Today's deaths: "+ this.state.today_con_deaths +" Today's cases:  "+ this.state.today_con_cases ));
 
         },
         // Note: it's important to handle errors here
@@ -182,7 +182,7 @@ class App extends Component {
             </div>
 
             <div class="col-sm mt-3 mb-3">
-            <ApxRadar type= "radar" name ={"New COVID-19 Cases"} data={this.state.confirmed_cases_series}/>
+            <ApxRadar type= "radar" name ={"New COVID-19 Cases"} data={this.state.confirmed_cases_series} date={this.state.date_series}/>
 
             </div>
         </div>

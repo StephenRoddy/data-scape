@@ -9,7 +9,7 @@ class ApxRadar extends React.Component {
     super(props);
 
     const dataIn = this.props.data;
-    console.log("Here is the series we will use: " + dataIn);
+
     this.state = {
 
       series: [{
@@ -51,7 +51,7 @@ class ApxRadar extends React.Component {
           }
         },
         xaxis: {
-          categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+          categories: []
         },
         yaxis: {
           tickAmount: 7,
@@ -74,66 +74,31 @@ class ApxRadar extends React.Component {
   componentDidMount(){
     // When the component mounts make sure that the days of the week reflect the days in teh array
 
-  let d = new Date();
+    let dateData  = [];
+    let daySeries = [];
+    let dateIn = this.props.date;
 
-    if (d.getDay() == 1){
-      this.setState({
-        options: {
-          xaxis: {
-            categories: ['Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday']
-                }
+    let j;
+
+    let dtObj;
+    let dtDay;
+    let weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday'];
+
+    for(j=0; j<= dateIn.length-1; j++){
+      dtObj = new Date(dateIn[j]);
+      dtDay = dtObj.getDay();
+      dateData[j] = dtDay;
+      daySeries[j] = weekDays[dateData[j]];
+    }
+    console.log(daySeries);
+
+    this.setState({
+      options: {
+        xaxis: {
+          categories: daySeries
               }
-            })
-          } else if (d.getDay() == 2){
-            this.setState({
-              options: {
-                  xaxis: {
-                      categories: ['Monday','Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday', 'Tuesday']
-                      }
-                    }
-                  })
-                } else if (d.getDay() == 3){
-                  this.setState({
-                    options: {
-                        xaxis: {
-                          categories: ['Tuesday','Monday','Sunday', 'Saturday', 'Friday', 'Thursday', 'Wednesday']
-                            }
-                          }
-                        })
-                      } else if (d.getDay() == 4){
-
-                        this.setState({
-                        options: {
-                            xaxis: {
-                              categories: ['Wednesday','Tuesday','Monday','Sunday', 'Saturday', 'Friday', 'Thursday']
-                                  }
-                                }
-                              })
-                            } else if (d.getDay() == 5){
-                              this.setState({
-                                options: {
-                                    xaxis: {
-                                        categories: ['Thursday','Wednesday','Tuesday','Monday','Sunday', 'Saturday', 'Friday']
-                                        }
-                                      }
-                                    })
-                                  } else if (d.getDay() == 6){
-                                    this.setState({
-                                      options: {
-                                          xaxis: {
-                                            categories: ['Friday', 'Thursday','Wednesday','Tuesday','Monday','Sunday', 'Saturday']
-                                              }
-                                            }
-                                          })
-                                        } else if (d.getDay() == 0){
-                                          this.setState({
-                                            options: {
-                                                xaxis: {
-                                                  categories: ['Saturday','Friday', 'Thursday','Wednesday','Tuesday','Monday','Sunday']
-                                                    }
-                                                  }
-                                                })
-                                              }
+            }
+          })
   }
 
   render() {
