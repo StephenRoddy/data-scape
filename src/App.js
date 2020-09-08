@@ -132,8 +132,7 @@ class App extends Component {
   }
 
 
-  render() {
-
+  render() {  
   let total_deaths = this.state.total_deaths;
   let total_cases = this.state.total_cases;
 

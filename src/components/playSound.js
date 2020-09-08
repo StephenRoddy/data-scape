@@ -11,7 +11,6 @@ class PlaySound extends Component {
 }
 
 render() {
-  Tone.Transport.start();
   const data = this.props.newSeven;
 
   const time = [0, 1, 2, 3, 4, 5, 6]; //Sequencing array to be integrated with data array
@@ -21,15 +20,19 @@ render() {
     dataTime[z] = [time[z], data[z]];
   } // Create the time note pairs for the part.
   const synth = new Tone.Synth().toDestination();
-  const part = new Tone.Part(((time, note) => {
-  	synth.triggerAttackRelease(note, "8n", time);
+  const now = Tone.now();
+
+  const part = new Tone.Part(((now, note) => {
+  	synth.triggerAttackRelease(note, "8n", now);
   }), dataTime);
 
   function handleClick(e) {
     e.preventDefault();
+    Tone.Transport.stop();
+    Tone.Transport.start();
     part.stop();
     part.start();
-  //  seq.stop();
+
     console.log('The button was clicked.');
 
   }
