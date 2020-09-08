@@ -6,9 +6,9 @@ class PlaySound extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
 }
+
 
 render() {
   const data = this.props.newSeven;
@@ -28,6 +28,7 @@ render() {
 
   function handleClick(e) {
     e.preventDefault();
+    Tone.start(); // no audio will play at all until we initiate tone.
     Tone.Transport.stop();
     Tone.Transport.start();
     part.stop();

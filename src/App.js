@@ -70,7 +70,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-
     // Get COVID-19 Total Deaths, Total Confirmed Cases and Dates
   fetch('https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=Date,TotalConfirmedCovidCases,ConfirmedCovidCases,ConfirmedCovidDeaths,TotalCovidDeaths&returnGeometry=false&outSR=4326&f=json') // use a header for the api keey value pair
     .then(res => res.json())
@@ -132,7 +131,7 @@ class App extends Component {
   }
 
 
-  render() {  
+  render() {
   let total_deaths = this.state.total_deaths;
   let total_cases = this.state.total_cases;
 
