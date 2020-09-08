@@ -179,11 +179,11 @@ class App extends Component {
                date={this.state.date_series}
                name= {"Total Confirmed Deaths"}/>
 
-           {<PlaySound />}
             </div>
 
             <div class="col-sm mt-3 mb-3">
             <ApxRadar type= "radar" name ={"New COVID-19 Cases"} data={this.state.confirmed_cases_series} date={this.state.date_series}/>
+            {<PlaySound title = {"Sonify Data"} newSeven={this.state.confirmed_cases_series} totalSeven={this.state.total_case_series}/>}
 
             </div>
         </div>
