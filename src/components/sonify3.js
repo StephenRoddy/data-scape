@@ -1,8 +1,12 @@
 //toneCheck.js
+// SImillar to sonify1 but we do a re-rangeing of the data first here to make sure it is audible.
+// However this rescaling is always in the range of 220 to 880, so the hegith of the pitch doesn't tell you much
+// Rather its the steepness of pitch changes.
+
 import React, { Component } from "react";
 import * as Tone from 'tone';
 
-class PlaySound extends Component {
+class SonifyThree extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,28 +15,46 @@ class PlaySound extends Component {
 
 
 render() {
-  const data = this.props.newSeven;
 
+  //rescale the incoming data array to usable frequencies
+  const dtaIn = this.props.data;
+  const data =[];
+
+  let dMin = dtaIn[0];
+  let dMax = dtaIn[dtaIn.length-1];
+  //let dMax = 1.5* dtaIn[0]; //The highest pitch will always equal 1.5 times the lowest
+
+  let nMin = 220;
+  let nMax = 880;
+
+  let j;
+  //rescaling function
+  for(j=0; j<7; j++){
+    data[j] = (((nMax-nMin)*(dtaIn[j] - dMin))/(dMax-dMin)) + nMin;
+  }
+  console.log(data);
+
+// Need to create time pitch pairs.
   const time = [0, 1, 2, 3, 4, 5, 6]; //Sequencing array to be integrated with data array
   let dataTime =[];
   let z;
   for(z=0; z<7; z++){
     dataTime[z] = [time[z], data[z]];
   } // Create the time note pairs for the part.
-  const synth = new Tone.Synth().toDestination();
-  const now = Tone.now();
 
-  const part = new Tone.Part(((now, note) => {
-  	synth.triggerAttackRelease(note, "8n", now);
+
+
+  const synth2 = new Tone.Synth().toDestination();
+  const now2 = Tone.now();
+
+  const part2 = new Tone.Part(((now2, note) => {
+  	synth2.triggerAttackRelease(note, "8n", now2);
   }), dataTime);
 
   function handleClick(e) {
     e.preventDefault();
-    Tone.start(); // no audio will play at all until we initiate tone.
-    Tone.Transport.stop();
-    Tone.Transport.start();
-    part.stop();
-    part.start();
+    part2.stop();
+    part2.start();
 
     console.log('The button was clicked.');
 
@@ -44,7 +66,7 @@ render() {
   }
 }
 
-    export default PlaySound
+    export default SonifyThree
 
 
 

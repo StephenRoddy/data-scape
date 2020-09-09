@@ -23,7 +23,13 @@ import * as Tone from 'tone';
 //import XYAxis from './components/axis/xy-axis.js';
 //import Line from './components/line/line.js';
 import Navbar from './components/navBar.js';
-import PlaySound from './components/playSound.js';
+
+//Import sonification components
+// SonifyOne and sonifyTwo represent 2 different mapping strategies
+import SonifyOne from './components/sonify1.js';
+import SonifyTwo from './components/sonify2.js';
+import SonifyThree from './components/sonify3.js';
+
 
 // Data Ticker Imports
 import Ticker from './components/ticker.js';
@@ -128,6 +134,11 @@ class App extends Component {
           });
         }
       )
+// Start the audio:
+Tone.start(); // no audio will play at all until we initiate tone.
+Tone.Transport.stop();
+Tone.Transport.start();
+
   }
 
 
@@ -147,11 +158,13 @@ class App extends Component {
 
         <div class="row">
           <div class="col-sm mt-3 mb-3">
-                 <ApxChrt
+                 {<ApxChrt
                  dataIn={this.state.total_case_series}
                  date={this.state.date_series}
                  name= {"Total Confirmed Cases"}
-                 />
+                 />}
+          {<SonifyTwo title = {"Sonify Data"} data={this.state.total_case_series}/>}
+
           </div>
 
           <div class="col-sm  mt-3 mb-3">
@@ -176,12 +189,13 @@ class App extends Component {
                dataIn={this.state.total_deaths_series}
                date={this.state.date_series}
                name= {"Total Confirmed Deaths"}/>
+               {<SonifyThree title = {"Sonify Data"} data={this.state.total_deaths_series} />}
 
             </div>
 
             <div class="col-sm mt-3 mb-3">
             <ApxRadar type= "radar" name ={"New COVID-19 Cases"} data={this.state.confirmed_cases_series} date={this.state.date_series}/>
-            {<PlaySound title = {"Sonify Data"} newSeven={this.state.confirmed_cases_series} totalSeven={this.state.total_case_series}/>}
+            {<SonifyTwo title = {"Sonify Data"} data={this.state.confirmed_cases_series} />}
 
             </div>
         </div>
