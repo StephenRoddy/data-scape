@@ -7,6 +7,10 @@ import './App.css';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+// Import p5
+import P5Wrapper from 'react-p5-wrapper';
+import boxMap from './components/p5skt/boxMap';
+
 // Import d3
 /*
 import * as d3 from "d3";
@@ -196,9 +200,22 @@ Tone.Transport.start();
             <div class="col-sm mt-3 mb-3">
             <ApxRadar type= "radar" name ={"New COVID-19 Cases"} data={this.state.confirmed_cases_series} date={this.state.date_series}/>
             {<SonifyTwo title = {"Sonify Data"} data={this.state.confirmed_cases_series} />}
-
             </div>
         </div>
+
+        <div class="col-sm mt-3 mb-3">
+          <div class="row">
+          <div class="opacity-5 shadow-lg">
+            <div class="card-body">
+              <h5 classs="card-title">Box Map of 6 data points</h5>
+              <h6 class="card-subtitle text-muted">Each side of the box will contain a color coded heatmap relating to some data point</h6>
+              <div className="mixed-chart">
+              {<P5Wrapper sketch={boxMap} />}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
         );
     }
