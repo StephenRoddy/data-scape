@@ -6,21 +6,46 @@ The framework will allow data to be represented with images, sound and visuals/a
 
 In its current state, d3.js and tone.js are integrated.
 
-Next steps:
 
-0. Fetch and Parse more useful data from GEO_Hive Api.
-0.1 Integrate line-charts properly.
-1. Integrate p5.js.
-2. Create helper functions for managing API data.
-3. Create components to deal with a broader range of d3.js visualisations.
-4. Create components to deal with animations.
-5. Create components to deal with sonififcations.
-6. Clean up the App.js file.
+Next steps:
+1. Integrate Three.js models. Mapping data to behaviours of the models.
+    https://threejs.org/
+    This guy could be used to represnt whether things are going in a positive or negative direction with emotes and expressions:
+    https://threejs.org/examples/#webgl_animation_skinning_morph
+
+    Here's some more inspiration:
+    https://digitalworlds.wordpress.com/2016/09/13/interlude-ginger-facial-rigging-model/
+    demo: https://sv-ginger.appspot.com/
+
+    tuts: https://tympanus.net/codrops/2019/10/14/how-to-create-an-interactive-3d-character-with-three-js/
+
+    Babylon.js could be used here too:
+    https://doc.babylonjs.com/examples/
+
+    Just generally interesting:
+    http://math.hws.edu/graphicsbook/demos/c5/vertex-and-color-animation.html
+
+
+2. Use shaders for some of the more intensive p5.js implementations:
+    links https://itp-xstory.github.io/p5js-shaders/#/./docs/what-are-shaders
+          https://github.com/StephenRoddy/p5jsShaderExamples
+
+
+Recent Steps:
+0. [x]Fetch and Parse more useful data from GEO_Hive Api.
+1. [x] Integrate p5.js.
+2. [x]Create helper functions for managing API data.
+3. [x]Create components to deal with a broader range of d3.js visualisations.
+4. [x]Create components to deal with animations.
+5. [x]Create components to deal with sonififcations.
+6. [x]Clean up the App.js file.
 
 Final Steps:
 1. Create examples w/IoT data, COVID-19 data, Smart CIty Data etc.
 
 Notes: Moved over to Apex Charts from D3.js. They are a lot more intuitive to implement in react.
+
+
 
 RESOURCES:
 https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0/geoservice?geometry=-7.921%2C53.252%2C-7.464%2C53.324
