@@ -10,6 +10,7 @@ import { render } from 'react-dom';
 // Import p5
 import P5Wrapper from 'react-p5-wrapper';
 import boxMap from './components/p5skt/boxMap';
+import ballMap from './components/p5skt/ballMap';
 
 // Import d3
 /*
@@ -203,8 +204,8 @@ Tone.Transport.start();
             </div>
         </div>
 
+        <div class="row">
         <div class="col-sm mt-3 mb-3">
-          <div class="row">
           <div class="opacity-5 shadow-lg">
             <div class="card-body">
               <h5 classs="card-title">Box Map of 6 data points</h5>
@@ -215,6 +216,18 @@ Tone.Transport.start();
         </div>
       </div>
     </div>
+    <div class="col-sm mt-3 mb-3">
+      <div class="opacity-5 shadow-lg">
+        <div class="card-body">
+          <h5 classs="card-title">Ball Map of N data points</h5>
+          <h6 class="card-subtitle text-muted">Data will be mapped to colored light</h6>
+          <div className="mixed-chart">
+          {<P5Wrapper sketch={ballMap} />}
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
 </div>
         );

@@ -12,9 +12,7 @@ export default function sketch(p5){
 
 /*
 p5.preload = () => {
-       b_w = 75;
-       b_h = 75;
-       b_d = 75;
+      fnt = p5.loadFont("arial.ttf");
     }
 */
     p5.setup = () => {
@@ -33,6 +31,7 @@ p5.preload = () => {
 
       p5.fill(255,0,0);
       p5.quad(0, 0, w, 0, w, h, 0, h);
+
       p5.push();
 
       p5.fill(0,255,0);
@@ -46,6 +45,7 @@ p5.preload = () => {
       p5.translate(0, 0, -d);
       p5.rotateX(90);
       p5.quad(0, 0, w, 0, w, d, 0, d);
+
 
       p5.pop();
       p5.push();
@@ -70,14 +70,18 @@ p5.preload = () => {
   }
 
     p5.draw = () => {
-      mseY= p5.mouseY;
+
       mseX= p5.mouseX;
+      mseY= p5.mouseY;
+      //Lighting
+      p5.ambientLight(210,210,210);
 
       p5.background('white');
-      p5.rotateX(mseY);
-      p5.rotateY(mseX);
+      p5.rotateX(-mseY*.33);
+      p5.rotateY(-mseX*.33);
 
       boxDraw(b_w, b_h, b_d);
+
     }
 
     p5.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
