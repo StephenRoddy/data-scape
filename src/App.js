@@ -208,7 +208,7 @@ Tone.Transport.start();
         <div class="col-sm mt-3 mb-3">
           <div class="opacity-5 shadow-lg">
             <div class="card-body">
-              <h5 classs="card-title">Box Map of n...6 data points</h5>
+              <h5 classs="card-title">Box Map of 6 data points</h5>
               <h6 class="card-subtitle text-muted">Each side of the box will contain a color coded heatmap relating to some data point</h6>
               <div className="mixed-chart">
               {<P5Wrapper sketch={boxMap} />}
