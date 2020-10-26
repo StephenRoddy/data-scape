@@ -17,10 +17,13 @@ render() {
   //rescale the incoming data array to usable frequencies
   const dtaIn = this.props.data;
   const data =[];
+  const stuff = [0,1,2,3,4,8,7,9,5,6];
 
-  let dMin = dtaIn[0];
-  let dMax = 1.5* dtaIn[0]; //The highest pitch will always equal 1.5 times the lowest
 
+ // Rescalling of data on basis of high and low points
+  let hiDatPnt = Math.max(...dtaIn); // get highest point in the data
+  let dMin = Math.min(...dtaIn); // get lowest point in the data
+  let dMax = 1.5* hiDatPnt; //The highest pitch will always equal 1.5 times the highest number in array
   let nMin = 220;
   let nMax = 880;
 
@@ -50,6 +53,9 @@ render() {
 
   function handleClick(e) {
     e.preventDefault();
+    Tone.start(); // no audio will play at all until we initiate tone.
+  //  Tone.Transport.stop();
+  //  Tone.Transport.start();
     part2.stop();
     part2.start();
 

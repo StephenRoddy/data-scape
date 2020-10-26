@@ -20,12 +20,13 @@ render() {
   const dtaIn = this.props.data;
   const data =[];
 
-  let dMin = dtaIn[0];
-  let dMax = dtaIn[dtaIn.length-1];
-  //let dMax = 1.5* dtaIn[0]; //The highest pitch will always equal 1.5 times the lowest
-
+  // Rescalling of data on basis of high and low points
+  let hiDatPnt = Math.max(...dtaIn); // get highest point in the data
+  let dMin = Math.min(...dtaIn); // get lowest point in the data
+  let dMax = 1.5* hiDatPnt; //The highest pitch will always equal 1.5 times the highest number in array
   let nMin = 220;
   let nMax = 880;
+
 
   let j;
   //rescaling function
@@ -47,14 +48,18 @@ render() {
   const synth2 = new Tone.Synth().toDestination();
   const now2 = Tone.now();
 
-  const part2 = new Tone.Part(((now2, note) => {
+  const part3 = new Tone.Part(((now2, note) => {
   	synth2.triggerAttackRelease(note, "8n", now2);
   }), dataTime);
 
   function handleClick(e) {
     e.preventDefault();
-    part2.stop();
-    part2.start();
+    Tone.start(); // no audio will play at all until we initiate tone.
+  //  Tone.Transport.stop();
+  //  Tone.Transport.start();
+    part3.stop();
+    part3.start();
+
 
     console.log('The button was clicked.');
 

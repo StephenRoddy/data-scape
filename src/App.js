@@ -31,7 +31,7 @@ import Navbar from './components/navBar.js';
 
 //Import sonification components
 // SonifyOne and sonifyTwo represent 2 different mapping strategies
-import SonifyOne from './components/sonify1.js';
+//import SonifyOne from './components/sonify1.js';
 import SonifyTwo from './components/sonify2.js';
 import SonifyThree from './components/sonify3.js';
 

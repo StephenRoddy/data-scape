@@ -27,11 +27,13 @@ render() {
 
   function handleClick(e) {
     e.preventDefault();
+    Tone.start(); // no audio will play at all until we initiate tone.
+  //  Tone.Transport.stop();
+  //  Tone.Transport.start();
     part.stop();
     part.start();
 
     console.log('The button was clicked.');
-
   }
 
       return(
