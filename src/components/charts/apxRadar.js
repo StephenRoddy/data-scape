@@ -8,13 +8,13 @@ class ApxRadar extends React.Component {
   constructor(props) {
     super(props);
 
-    const dataIn = this.props.data;
+    const data = this.props.data;
 
     this.state = {
 
       series: [{
         name: 'Series 1',
-        data: dataIn,
+        data: data,
       }],
       options: {
         chart: {
@@ -107,7 +107,7 @@ class ApxRadar extends React.Component {
       <div class="opacity-5 shadow">
         <div class="card-body">
           <h5 classs="card-title">{this.props.name}</h5>
-          <h6 class="card-subtitle text-muted">Past 7 days</h6>
+          <h6 class="card-subtitle text-muted">{this.props.time_series}</h6>
         <div id="chart">
           <Chart options={this.state.options} series={this.state.series} type="radar" height={350} />
         </div>
