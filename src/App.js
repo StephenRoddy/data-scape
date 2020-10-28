@@ -35,7 +35,7 @@ import Navbar from './components/navBar.js';
 import SonifyTwo from './components/sonify2.js';
 import SonifyThree from './components/sonify3.js';
 import SonifyFourNoise from './components/sonify4_noise_lfo.js';
-
+import SonifyFiveFilter from './components/sonify5_noise_cutoff.js';
 
 // Data Ticker Imports
 import Ticker from './components/ticker.js';
@@ -327,7 +327,7 @@ Tone.Transport.start();
           <h5 classs="card-title">Sonification of all Deaths to Date</h5>
           <h6 class="card-subtitle text-muted">Ireland</h6>
           <div className="mixed-chart">
-          {<SonifyFourNoise title = {"Sonify Data"} data={this.state.full_death_series}/>}
+          {<SonifyFiveFilter title = {"Sonify Data"} data={this.state.full_death_series}/>}
       </div>
     </div>
   </div>
