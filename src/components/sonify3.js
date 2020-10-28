@@ -57,9 +57,11 @@ render() {
     Tone.start(); // no audio will play at all until we initiate tone.
   //  Tone.Transport.stop();
   //  Tone.Transport.start();
+    if(part3.state == "started"){
     part3.stop();
+  } else{
     part3.start();
-
+  }
 
     console.log('The button was clicked.');
 

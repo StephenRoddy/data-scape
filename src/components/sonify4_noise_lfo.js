@@ -31,29 +31,42 @@ render() {
     data[i] = (((nMax-nMin)*(dtaIn[i] - dMin))/(dMax-dMin)) + nMin;
   }
 
-  const autoFilter = new Tone.AutoFilter().toDestination().start();
+// Create Filter Pattern and Noise Source
+  const autoFilter = new Tone.AutoFilter().toDestination();
   const noise = new Tone.Noise().connect(autoFilter);
+
+// Create Looping construct used to map the data to the autoFilter frequency
+  let data_cycle_k = 0; //Data Mapping Loop w/ Timing element
+  const data_mapper_loop = new Tone.Loop((time) => {
+   // triggered every 16th note.
+    autoFilter.frequency.rampTo(data[data_cycle_k],.5);
+    if(data_cycle_k < data.length -1 ){    //if statement to ensure that the frequency rests at the highpoint of the data (we don't overshoot array)
+      data_cycle_k++;
+}
+    if(data_cycle_k == data.length -1){ // If statement ends the sonification when we have read all of the data with the k index
+      noise.stop();
+      autoFilter.stop();
+      data_mapper_loop.stop(0);
+      data_cycle_k =0;                  // Setting K to 0 resets the sonification to the start so it begins from scratch again when we click.
+      }
+      //console.log(data[data_cycle_k]);
+    }, "16n");
 
   function handleClick(e) {
     e.preventDefault();
     Tone.start(); // no audio will play at all until we initiate tone.
-
     if(noise.state == "started"){ // On press turn it off if it's on. turn it on if its off
-    noise.stop();
+      noise.stop();
+      autoFilter.stop();
+      data_mapper_loop.stop(0);
+      data_cycle_k =0;                  // Setting K to 0 resets the sonification to the start so it begins from scratch again when we click.
+
     } else{
     //autoFilter.frequency.rampTo(500,50);
-
-    noise.start();
-
-    let k =0; //Data Mapping Loop w/ Timing element
-    const loop = new Tone.Loop((time) => {
-    	// triggered every 16th note.
-      autoFilter.frequency.rampTo(data[k],.5);
-      k++;
-    	console.log(time);
-    }, "16n").start(0);
-  }
-
+      noise.start();
+      autoFilter.start();
+      data_mapper_loop.start(0);
+    }
   }
 
       return(

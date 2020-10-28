@@ -43,7 +43,6 @@ render() {
   } // Create the time note pairs for the part.
 
 
-
   const synth2 = new Tone.Synth().toDestination();
   const now2 = Tone.now();
 
@@ -56,11 +55,12 @@ render() {
     Tone.start(); // no audio will play at all until we initiate tone.
   //  Tone.Transport.stop();
   //  Tone.Transport.start();
+  if(part2.state == "started"){
     part2.stop();
+
+  } else {
     part2.start();
-
-    console.log('The button was clicked.');
-
+    }
   }
 
       return(

@@ -34,7 +34,7 @@ import Navbar from './components/navBar.js';
 //import SonifyOne from './components/sonify1.js';
 import SonifyTwo from './components/sonify2.js';
 import SonifyThree from './components/sonify3.js';
-import SonifyFourNoise from './components/sonify4_noise.js';
+import SonifyFourNoise from './components/sonify4_noise_lfo.js';
 
 
 // Data Ticker Imports
