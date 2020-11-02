@@ -16,7 +16,9 @@ Because we can zoom in on the line graphs the 7 day representation is redundant.
 Replace this with a different kind of graph, and represent different data.
 Bar charts representing the number of new cases per day (over the past 7) rather than the total cases to date on that given day would make more sense.
 
-2. Add new sonification strategies. 
+2. Clean up the data acquisition process to remove redundancy around the data for 7 days. Just slice this data from the larger data set.
+
+3. Add new sonification strategies.
 
 
 
