@@ -18,7 +18,7 @@ class ApxRadar extends React.Component {
       }],
       options: {
         chart: {
-          height: 350,
+        //  height: 350,
           type: 'radar',
         },
         dataLabels: {

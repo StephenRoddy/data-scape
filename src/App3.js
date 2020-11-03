@@ -176,6 +176,7 @@ class App extends Component {
         }
         full_months = new_ar;
 
+
         // NB. Need to reverse these array as we filled them backwards from the end of the original data
         // I just reverse the arrays below when we set state.
         // So I'm reversing these as I load them into state.
@@ -193,8 +194,8 @@ class App extends Component {
         total_case_series:  tot_c.reverse(),
         full_death_series: full_d.reverse(),
         full_case_series: full_c.reverse(),
-        confirmed_deaths_series: con_d.reverse(), // over past 7 days
-        confirmed_cases_series: con_c.reverse(),  // over past 7 days
+        confirmed_deaths_series: con_d.reverse(),
+        confirmed_cases_series: con_c.reverse(),
         today_tot_deaths: tot_d[tot_d.length -1],
         today_tot_cases:  tot_c[tot_c.length -1],
         today_con_deaths: con_d[con_d.length -1],
@@ -244,15 +245,14 @@ Tone.Transport.start();
         <div class="row">
           <div class="col-sm mt-3 mb-3">
                  {<ApxChrt
-                 data={this.state.confirmed_cases_series}
+                 data={this.state.total_case_series}
                  date={this.state.date_series}
                  time_labels= {this.state.seven_days}
                  time_series = {"Past 7 Days"}
-                 name= {"Daily New Cases"}
-                 type= "bar"
-                 id_tag ={"Barchart 1"}
+                 name= {"Total Confirmed Cases"}
+                 type='bar'
                  />}
-          {<SonifyTwo title = {"Sonify Data"} data={this.state.confirmed_cases_series}/>}
+          {<SonifyTwo title = {"Sonify Data"} data={this.state.total_case_series}/>}
 
           </div>
 
@@ -275,16 +275,13 @@ Tone.Transport.start();
 
 
                <ApxChrt
-               data={this.state.confirmed_deaths_series}
+               data={this.state.total_deaths_series}
                date={this.state.date_series}
                time_labels= {this.state.seven_days}
                time_series = {"Past 7 Days"}
-               name= {"Daily New Deaths"}
-               type= "bar"
-               id_tag ={"Barchart 2"}
-
+               name= {"Total Confirmed Deaths"}
                />
-            {<SonifyThree title = {"Sonify Data"} data={this.state.confirmed_deaths_series}/>}
+            {<SonifyThree title = {"Sonify Data"} data={this.state.total_deaths_series}/>}
 
             </div>
 
@@ -295,11 +292,7 @@ Tone.Transport.start();
             data={this.state.confirmed_cases_series}
             time_labels= {this.state.seven_days}
             time_series = {"Past 7 Days"}
-            date={this.state.date_series}
-            type= "radar"
-            id_tag ={"7-day Radar Chart"}
-
-            />
+            date={this.state.date_series}/>
             {<SonifyTwo title = {"Sonify Data"} data={this.state.confirmed_cases_series} />}
             </div>
         </div>
@@ -312,8 +305,8 @@ Tone.Transport.start();
         time_labels= {this.state.full_months}
         time_series = {"Since Start of Pandemic"}
         name= {"All Confirmed Cases"}
-        type= "line"
-        id_tag ={"Line Chart 1"}
+        type={"Line-Chart"}
+
         />
 
           <div class="opacity-5 shadow-lg">
@@ -333,8 +326,7 @@ Tone.Transport.start();
     time_labels= {this.state.full_months}
     time_series = {"Since Start of Pandemic"}
     name= {"All Confirmed Deaths"}
-    type= "line"
-    id_tag ={"Line Chart 2"}
+    type={"Line-Chart"}
     />
 
       <div class="opacity-5 shadow-lg">

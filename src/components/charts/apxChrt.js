@@ -9,7 +9,7 @@ class ApxChrt extends Component {
       data: this.props.data,
       options: {
         chart: {
-          id: "Line-Chart"
+          id: this.props.id_tag
         },
         xaxis: {
           categories: this.props.time_labels,
@@ -60,7 +60,7 @@ console.log("Here is the data" + this.props.time_label);
             <Chart
               options={this.state.options}
               series={this.state.series}
-              type="line"
+              type = {this.props.type}
               width="500"
             />
           </div>
