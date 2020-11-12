@@ -11,16 +11,30 @@ I am currently using Apex Charts over d3.js.
 
 Next steps:
 
-1. There are currently 4 line graphs. 2 representing case and death data over a 7 day period and 2 representing the data across the entire pandemic.
-Because we can zoom in on the line graphs the 7 day representation is redundant.
-Replace this with a different kind of graph, and represent different data.
-Bar charts representing the number of new cases per day (over the past 7) rather than the total cases to date on that given day would make more sense.
+1. Next step is to replace the Radar map with a GeoJSON implemenation pulling form the Governments COVID-19 API.
+API-data Here: https://opendata.arcgis.com/datasets/4779c505c43c40da9101ce53f34bb923_0.geojson
+
+  Example map here:data-scape/GeoJsonExampleCovidIreland
+  It's just the JSON though.
+  You can view it online here: https://geojson.io/#map=8/53.450/-7.929
+
+  Idea here is ton integrate leaflet into the framework and update our API call to pull county information also that we then write to the map.
+
 
 2. Clean up the data acquisition process to remove redundancy around the data for 7 days. Just slice this data from the larger data set.
 
 3. Add new sonification strategies.
 
 
+
+RESOURCES FOR SETTING UP MAP:
+Intro to GEOJSON
+https://developer.here.com/blog/an-introduction-to-geojson
+
+We're going to use MapBox. Leaflet seems messy for our needs here.
+https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/
+
+https://towardsdatascience.com/make-a-covid-19-choropleth-map-in-mapbox-5c93ac86e907
 
 RESOURCES:
 https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0/geoservice?geometry=-7.921%2C53.252%2C-7.464%2C53.324
