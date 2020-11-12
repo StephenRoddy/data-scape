@@ -22,6 +22,7 @@
     "react-dom": "^16.14.0",
     "react-p5-wrapper": "^2.3.0",
     "react-scripts": "3.4.3",
+    "react-simple-maps": "^2.3.0",
     "tone": "^14.7.39"
   },
   "scripts": {

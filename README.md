@@ -18,7 +18,7 @@ API-data Here: https://opendata.arcgis.com/datasets/4779c505c43c40da9101ce53f34b
   It's just the JSON though.
   You can view it online here: https://geojson.io/#map=8/53.450/-7.929
 
-  Idea here is ton integrate leaflet into the framework and update our API call to pull county information also that we then write to the map.
+  Idea here is to integrate react-simple-maps into the framework and update our API call to pull county information also that we then write to the map.
 
 
 2. Clean up the data acquisition process to remove redundancy around the data for 7 days. Just slice this data from the larger data set.
@@ -31,10 +31,8 @@ RESOURCES FOR SETTING UP MAP:
 Intro to GEOJSON
 https://developer.here.com/blog/an-introduction-to-geojson
 
-We're going to use MapBox. Leaflet seems messy for our needs here.
-https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/
-
-https://towardsdatascience.com/make-a-covid-19-choropleth-map-in-mapbox-5c93ac86e907
+We're going to use React Simple Maps. Leaflet seems messy for our needs here and MapBox is quite large and somewhat locked down with paywalls.
+https://www.react-simple-maps.io/docs/getting-started/
 
 RESOURCES:
 https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0/geoservice?geometry=-7.921%2C53.252%2C-7.464%2C53.324

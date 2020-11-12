@@ -6,6 +6,7 @@ import './App.css';
 // Import React
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import ReactDOM from "react-dom"; // needed for the react-simple-maps implementation
 
 // Import p5
 //import P5Wrapper from 'react-p5-wrapper';
